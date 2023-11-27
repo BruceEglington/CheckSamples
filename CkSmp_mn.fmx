@@ -1,0 +1,338 @@
+object fmCkSmp_mn: TfmCkSmp_mn
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 694
+  ClientWidth = 991
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 991.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object ToolBar1: TToolBar
+      Align = Client
+      Size.Width = 991.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object bCheck: TButton
+        Position.X = 311.000000000000000000
+        Position.Y = 19.000000000000000000
+        TabOrder = 6
+        Text = 'Check'
+        TextSettings.Trimming = None
+        OnClick = miCheckClick
+      end
+      object bConnect: TButton
+        Position.X = 114.000000000000000000
+        Position.Y = 19.000000000000000000
+        TabOrder = 3
+        Text = 'Connect'
+        TextSettings.Trimming = None
+        OnClick = miConnectClick
+      end
+      object bExit: TButton
+        Position.X = 16.000000000000000000
+        Position.Y = 19.000000000000000000
+        TabOrder = 0
+        Text = 'Exit'
+        TextSettings.Trimming = None
+        OnClick = miExitClick
+      end
+      object bExport: TButton
+        Position.X = 410.000000000000000000
+        Position.Y = 19.000000000000000000
+        TabOrder = 1
+        Text = 'Export'
+        TextSettings.Trimming = None
+        OnClick = miExportSpreadsheetClick
+      end
+      object bImport: TButton
+        Position.X = 213.000000000000000000
+        Position.Y = 19.000000000000000000
+        TabOrder = 2
+        Text = 'Import'
+        TextSettings.Trimming = None
+        OnClick = miImportSpreadsheetClick
+      end
+    end
+  end
+  object Panel2: TPanel
+    Align = Client
+    Size.Width = 991.000000000000000000
+    Size.Height = 359.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object gNewSamples: TGrid
+      Align = Client
+      CanFocus = True
+      ClipChildren = True
+      Size.Width = 991.000000000000000000
+      Size.Height = 318.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'gridstyle'
+      TabOrder = 0
+      RowCount = 0
+      Options = [AlternatingRowBackground, Editing, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, AlwaysShowSelection, Tabs, Header, HeaderClick, AutoDisplacement]
+      Images = SVGIconImageList1
+      Viewport.Width = 987.000000000000000000
+      Viewport.Height = 293.000000000000000000
+    end
+    object ToolBar2: TToolBar
+      Size.Width = 991.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object bnNewSamples: TBindNavigator
+        Position.X = 16.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 240.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        DataSource = BindSourceDB1
+        xRadius = 4.000000000000000000
+        yRadius = 4.000000000000000000
+      end
+      object Button1: TButton
+        Position.X = 311.000000000000000000
+        Position.Y = 11.000000000000000000
+        TabOrder = 6
+        Text = 'Button1'
+        TextSettings.Trimming = None
+        OnClick = Button1Click
+      end
+    end
+  end
+  object Panel3: TPanel
+    Align = Bottom
+    Position.Y = 424.000000000000000000
+    Size.Width = 991.000000000000000000
+    Size.Height = 216.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object gExistSampleNo: TGrid
+      Align = Client
+      CanFocus = True
+      ClipChildren = True
+      Size.Width = 991.000000000000000000
+      Size.Height = 216.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Viewport.Width = 987.000000000000000000
+      Viewport.Height = 191.000000000000000000
+    end
+  end
+  object Splitter1: TSplitter
+    Align = Bottom
+    Cursor = crVSplit
+    MinSize = 20.000000000000000000
+    Position.Y = 408.000000000000000000
+    Size.Width = 991.000000000000000000
+    Size.Height = 16.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'splitterstyle'
+  end
+  object StatusBar1: TStatusBar
+    Position.Y = 640.000000000000000000
+    ShowSizeGrip = True
+    Size.Width = 991.000000000000000000
+    Size.Height = 54.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object lsbCount: TLabel
+      Position.X = 24.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 72.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Trimming = None
+      Text = 'i = '
+      TabOrder = 0
+    end
+    object lsbSampleNo: TLabel
+      Position.X = 192.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 161.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.WordWrap = False
+      TextSettings.Trimming = None
+      Text = 'SampleNo'
+      TabOrder = 1
+    end
+    object lsbDatabase: TLabel
+      Align = Right
+      AutoSize = True
+      Position.X = 941.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 54.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      TextSettings.WordWrap = False
+      TextSettings.Trimming = None
+      Text = 'Database'
+      TabOrder = 2
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 720
+    Top = 8
+    object mi_File: TMenuItem
+      Text = 'File'
+      object miConnect: TMenuItem
+        Locked = True
+        Text = 'Connect'
+        OnClick = miConnectClick
+      end
+      object miDivider1: TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object miImportSpreadsheet: TMenuItem
+        Locked = True
+        Text = 'Import spreadsheet'
+        OnClick = miImportSpreadsheetClick
+      end
+      object miExportSpreadsheet: TMenuItem
+        Locked = True
+        Text = 'Export Spreadsheet'
+        OnClick = miExportSpreadsheetClick
+      end
+      object miDivider2: TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object miExit: TMenuItem
+        Locked = True
+        Text = 'Exit'
+        OnClick = miExitClick
+      end
+    end
+    object miCheck: TMenuItem
+      Text = 'Check'
+      OnClick = miCheckClick
+    end
+    object miStyles: TMenuItem
+      Text = 'Styles'
+    end
+    object miHelp: TMenuItem
+      Text = 'Help'
+      object miAbout: TMenuItem
+        Locked = True
+        Text = 'About'
+        OnClick = miAboutClick
+      end
+    end
+  end
+  object StyleBook1: TStyleBook
+    UseStyleManager = True
+    Styles = <
+      item
+      end>
+    Left = 928
+    Top = 16
+  end
+  object SaveDialogSprdSheet: TSaveDialog
+    DefaultExt = '.XLSX'
+    FileName = 'SampleNo pre-import check'
+    Filter = 'Excel 2010-2023|*.XLSX'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofShareAware, ofEnableSizing]
+    Left = 616
+    Top = 8
+  end
+  object SVGIconImageList1: TSVGIconImageList
+    Source = <>
+    Destination = <>
+    Left = 824
+    Top = 16
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 36
+    Top = 125
+    object LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      GridControl = gExistSampleNo
+      Columns = <
+        item
+          MemberName = 'SAMPLENO'
+        end
+        item
+          MemberName = 'ORIGINALNO'
+        end
+        item
+          MemberName = 'LONGITUDE'
+          DecimalDigits = 5
+        end
+        item
+          MemberName = 'LATITUDE'
+          DecimalDigits = 5
+        end
+        item
+          MemberName = 'ContinentID'
+        end
+        item
+          MemberName = 'CountryAbr'
+        end>
+    end
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = gNewSamples
+      Columns = <
+        item
+          MemberName = 'SampleNo'
+        end
+        item
+          MemberName = 'OriginalNo'
+        end
+        item
+          MemberName = 'RegionID'
+        end
+        item
+          MemberName = 'Longitude'
+          DecimalDigits = 5
+        end
+        item
+          MemberName = 'Latitude'
+          DecimalDigits = 5
+        end
+        item
+          MemberName = 'SampleStatus'
+        end
+        item
+          MemberName = 'LocationStatusLongitude'
+          DecimalDigits = 5
+        end
+        item
+          MemberName = 'LocationStatusLatitude'
+          DecimalDigits = 5
+        end
+        item
+          MemberName = 'ExistingRegionID'
+        end>
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = dmCkSmp.fdmtNewSamples
+    ScopeMappings = <>
+    Left = 32
+    Top = 185
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = dmCkSmp.fdqSamples
+    ScopeMappings = <>
+    Left = 480
+    Top = 336
+  end
+end

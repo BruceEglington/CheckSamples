@@ -1,0 +1,325 @@
+object CkSmp_import: TCkSmp_import
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 773
+  ClientWidth = 897
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 897.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    TabStop = False
+    object bCancel: TButton
+      Position.X = 16.000000000000000000
+      Position.Y = 11.000000000000000000
+      TabOrder = 0
+      Text = 'Cancel'
+      TextSettings.Trimming = None
+      OnClick = bCancelClick
+    end
+    object bOpen: TButton
+      Position.X = 120.000000000000000000
+      Position.Y = 11.000000000000000000
+      TabOrder = 1
+      Text = 'Open'
+      TextSettings.Trimming = None
+      OnClick = bOpenClick
+    end
+    object bFormatValues: TButton
+      Position.X = 224.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Format Values'
+      TextSettings.Trimming = None
+      OnClick = bFormatValuesClick
+    end
+  end
+  object Panel2: TPanel
+    Align = Client
+    Size.Width = 897.000000000000000000
+    Size.Height = 467.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    TabStop = False
+    object Tabs: TTabControl
+      Align = Bottom
+      Position.Y = 444.000000000000000000
+      Size.Width = 897.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      TabStop = False
+      TabPosition = PlatformDefault
+    end
+    object SheetData: TGrid
+      Align = Client
+      CanFocus = True
+      ClipChildren = True
+      Size.Width = 897.000000000000000000
+      Size.Height = 444.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      TabStop = False
+      OnDrawColumnCell = SheetDataDrawColumnCell
+      OnGetValue = SheetDataGetValue
+      Viewport.Width = 897.000000000000000000
+      Viewport.Height = 444.000000000000000000
+    end
+  end
+  object pDefinitions: TPanel
+    Align = Bottom
+    Position.Y = 520.000000000000000000
+    Size.Width = 897.000000000000000000
+    Size.Height = 222.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    TabStop = False
+    object pDefineFields: TPanel
+      Align = Bottom
+      Position.Y = 40.000000000000000000
+      Size.Width = 897.000000000000000000
+      Size.Height = 182.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      TabStop = False
+      object lSampleID: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 60.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Sample ID'
+        TabOrder = 9
+        TabStop = False
+      end
+      object eSampleIDColStr: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 1
+        Position.X = 84.000000000000000000
+        Position.Y = 33.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lDataColumns: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 8.000000000000000000
+        Size.Width = 217.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Data columns'
+        TabOrder = 10
+        TabStop = False
+      end
+      object lOriginalID: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 65.000000000000000000
+        Size.Width = 60.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Original ID'
+        TabOrder = 8
+        TabStop = False
+      end
+      object lLongitude: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 124.000000000000000000
+        Size.Width = 60.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Longitude'
+        TabOrder = 6
+        TabStop = False
+      end
+      object lLatitude: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 154.000000000000000000
+        Size.Width = 60.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Latitude'
+        TabOrder = 0
+        TabStop = False
+      end
+      object eLongitudeColStr: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 4
+        Position.X = 84.000000000000000000
+        Position.Y = 122.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object eLatitudeColStr: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 5
+        Position.X = 84.000000000000000000
+        Position.Y = 152.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object eOriginalIDColStr: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 2
+        Position.X = 84.000000000000000000
+        Position.Y = 63.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lRegionID: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 94.000000000000000000
+        Size.Width = 60.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Region ID'
+        TabOrder = 7
+        TabStop = False
+      end
+      object eRegionIDColStr: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 3
+        Position.X = 84.000000000000000000
+        Position.Y = 92.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Panel5: TPanel
+      Align = Bottom
+      Position.Y = -25.000000000000000000
+      Size.Width = 897.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      TabStop = False
+      object pDefineRows: TPanel
+        Align = Left
+        Size.Width = 457.000000000000000000
+        Size.Height = 65.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        TabStop = False
+        object lRowsToImport: TLabel
+          Position.X = 8.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 217.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'Rows to import'
+          TabOrder = 2
+          TabStop = False
+          object eFromRow: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 3
+            Text = '2'
+            Position.X = 68.000000000000000000
+            Position.Y = 20.000000000000000000
+            Size.Width = 69.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+        object lFromRow: TLabel
+          Position.X = 8.000000000000000000
+          Position.Y = 27.000000000000000000
+          Size.Width = 60.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'From row'
+          TabOrder = 1
+          TabStop = False
+        end
+        object lToRow: TLabel
+          Position.X = 184.000000000000000000
+          Position.Y = 27.000000000000000000
+          Size.Width = 44.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Trimming = None
+          Text = 'To row'
+          TabOrder = 0
+          TabStop = False
+        end
+        object eToRow: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 5
+          Position.X = 236.000000000000000000
+          Position.Y = 24.000000000000000000
+          Size.Width = 69.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object bFindLast: TButton
+          Position.X = 344.000000000000000000
+          Position.Y = 24.000000000000000000
+          Size.Width = 89.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 6
+          Text = 'Find last row'
+          TextSettings.Trimming = None
+          OnClick = bFindLastClick
+        end
+      end
+      object bImport: TButton
+        Position.X = 576.000000000000000000
+        Position.Y = 24.000000000000000000
+        TabOrder = 7
+        Text = 'Import'
+        TextSettings.Trimming = None
+        OnClick = bImportClick
+      end
+    end
+  end
+  object sbSheet: TStatusBar
+    Position.Y = 742.000000000000000000
+    ShowSizeGrip = True
+    Size.Width = 897.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    TabStop = False
+  end
+  object Splitter1: TSplitter
+    Align = Bottom
+    Cursor = crVSplit
+    MinSize = 20.000000000000000000
+    Position.Y = 508.000000000000000000
+    Size.Width = 897.000000000000000000
+    Size.Height = 12.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'splitterstyle'
+    TabStop = False
+  end
+  object OpenDialogSprdSheet: TOpenDialog
+    DefaultExt = '.XLSX'
+    Filter = 'Excel 2007|*.XLSX|Excel 2003|*.XLS'
+    Options = [ofHideReadOnly, ofShowHelp, ofExtensionDifferent, ofPathMustExist, ofFileMustExist, ofShareAware, ofEnableSizing]
+    Left = 696
+    Top = 8
+  end
+end
