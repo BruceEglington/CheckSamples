@@ -91,6 +91,7 @@ var
   iCode : integer;
   LatLonCutoff : double;
 begin
+  //make a small change to test
   LatLonCutoff := 0.00001;
       tNewRegionID := Trim(dmCkSmp.fdmtNewSamplesRegionID.AsString);
       tNewSampleNo := Trim(dmCkSmp.fdmtNewSamplesSampleNo.AsString);
