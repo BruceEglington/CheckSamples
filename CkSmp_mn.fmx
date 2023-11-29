@@ -81,9 +81,8 @@ object fmCkSmp_mn: TfmCkSmp_mn
       TabOrder = 0
       RowCount = 0
       Options = [AlternatingRowBackground, Editing, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, AlwaysShowSelection, Tabs, Header, HeaderClick, AutoDisplacement]
-      Images = SVGIconImageList1
-      Viewport.Width = 987.000000000000000000
-      Viewport.Height = 293.000000000000000000
+      Viewport.Width = 991.000000000000000000
+      Viewport.Height = 318.000000000000000000
     end
     object ToolBar2: TToolBar
       Size.Width = 991.000000000000000000
@@ -126,8 +125,8 @@ object fmCkSmp_mn: TfmCkSmp_mn
       Size.Height = 216.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
-      Viewport.Width = 987.000000000000000000
-      Viewport.Height = 191.000000000000000000
+      Viewport.Width = 991.000000000000000000
+      Viewport.Height = 216.000000000000000000
     end
   end
   object Splitter1: TSplitter
@@ -248,12 +247,6 @@ object fmCkSmp_mn: TfmCkSmp_mn
     Left = 616
     Top = 8
   end
-  object SVGIconImageList1: TSVGIconImageList
-    Source = <>
-    Destination = <>
-    Left = 824
-    Top = 16
-  end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
@@ -290,6 +283,10 @@ object fmCkSmp_mn: TfmCkSmp_mn
       DataSource = BindSourceDB1
       GridControl = gNewSamples
       Columns = <
+        item
+          MemberName = 'SeqNo'
+          TextWidth = 15
+        end
         item
           MemberName = 'SampleNo'
         end

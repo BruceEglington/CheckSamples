@@ -34,11 +34,13 @@ var
    TotalRecs                   : Integer;
    AssocCol,
    ImportSheetNumber,
-   SampleNoCol, OriginalNoCol,
+   SeqNoCol,
+   SampleIDCol, OriginalIDCol,
    RegionIDCol,
    LatitudeCol, LongitudeCol : integer;
-   SampleNoColStr,OriginalNoColStr,
+   SampleIDColStr,OriginalIDColStr,
    RegionIDColStr,
+   SeqNoColStr,
    LatitudeColStr, LongitudeColStr : string;
    FromRowValueString, ToRowValueString : string;
    FromRow, ToRow : integer;

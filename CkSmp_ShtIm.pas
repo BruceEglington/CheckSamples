@@ -29,8 +29,8 @@ type
     eToRow: TEdit;
     eFromRow: TEdit;
     bImport: TButton;
-    lSampleID: TLabel;
-    eSampleIDColStr: TEdit;
+    lSeqNo: TLabel;
+    eSeqNoColStr: TEdit;
     lDataColumns: TLabel;
     eOriginalIDColStr: TEdit;
     lOriginalID: TLabel;
@@ -43,6 +43,8 @@ type
     bFindLast: TButton;
     lRegionID: TLabel;
     eRegionIDColStr: TEdit;
+    Label1: TLabel;
+    eSampleIDColStr: TEdit;
     procedure bCancelClick(Sender: TObject);
     procedure bOpenClick(Sender: TObject);
     procedure bImportClick(Sender: TObject);
@@ -128,7 +130,7 @@ begin
   until (iCode = 0);
   try
     i := FromRow;
-    j := ConvertCol2Int(eSampleIDColStr.Text);
+    j := ConvertCol2Int(eSeqNoColStr.Text);
     ToRow := 0;
     repeat
       i := i + 1;
@@ -157,14 +159,12 @@ var
   iCode : integer;
   i : integer;
   tmpStr : string;
-  SampleIDCol, OriginalIDCol,
-  RegionIDCol,
-  LongitudeCol, LatitudeCol : integer;
 begin
   FromRowValueString := UpperCase(eFromRow.Text);
   ToRowValueString := UpperCase(eToRow.Text);
-  SampleNoColStr := UpperCase(eSampleIDColStr.Text);
-  OriginalNoColStr := UpperCase(eOriginalIDColStr.Text);
+  SeqNoColStr := UpperCase(eSeqNoColStr.Text);
+  SampleIDColStr := UpperCase(eSampleIDColStr.Text);
+  OriginalIDColStr := UpperCase(eOriginalIDColStr.Text);
   RegionIDColStr := UpperCase(eRegionIDColStr.Text);
   LongitudeColStr := UpperCase(eLongitudeColStr.Text);
   LatitudeColStr := UpperCase(eLatitudeColStr.Text);
@@ -200,32 +200,39 @@ begin
       end;
   until (iCode = 0);
   {convert input columns for variables to numeric}
+  SeqNoCol := ConvertCol2Int(eSeqNoColStr.Text);
+  //ShowMessage('SeqNoCol = '+Int2Str(SeqNoCol));
   SampleIDCol := ConvertCol2Int(eSampleIDColStr.Text);
   OriginalIDCol := ConvertCol2Int(eOriginalIDColStr.Text);
   RegionIDCol := ConvertCol2Int(eRegionIDColStr.Text);
   LongitudeCol := ConvertCol2Int(eLongitudeColStr.Text);
   LatitudeCol := ConvertCol2Int(eLatitudeColStr.Text);
+  //ShowMessage('3');
   if (iCode = 0) then
   begin
     ModalResult := mrOK;
-    try
-      dmCkSmp.fdmtNewSamples.Open;
-    except
-    end;
+    dmCkSmp.fdmtNewSamples.Open;
     try
       dmCkSmp.fdmtNewSamples.Edit;
       dmCkSmp.fdmtNewSamples.EmptyDataSet;
     except
     end;
+    //ShowMessage('4');
     Application.ProcessMessages;
+    //dmCkSmp.fdmtNewSamples.Open;
     dmCkSmp.fdmtNewSamples.DisableControls;
     try
       for i := FromRow to ToRow do
       begin
         try
+          //if (i<3) then ShowMessage('5a');
           dmCkSmp.fdmtNewSamples.Append;
+          tmpStr := Xls.GetStringFromCell(i,SeqNoCol);
+          dmCkSmp.fdmtNewSamplesSeqNo.AsInteger := StrToInt(tmpStr);
+          //if (i<3) then ShowMessage('5b');
           tmpStr := Xls.GetStringFromCell(i,SampleIDCol);
           dmCkSmp.fdmtNewSamplesSampleNo.AsString := tmpStr;
+          //if (i<3) then ShowMessage('5c');
           tmpStr := Xls.GetStringFromCell(i,OriginalIDCol);
           dmCkSmp.fdmtNewSamplesOriginalNo.AsString := tmpStr;
           tmpStr := Xls.GetStringFromCell(i,RegionIDCol);
@@ -244,9 +251,11 @@ begin
         end;
       end;
     finally
+      //ShowMessage('6a');
       dmCkSmp.fdmtNewSamples.First;
       dmCkSmp.fdmtNewSamples.EnableControls;
     end;
+    //ShowMessage('6b');
     Application.ProcessMessages;
   end else
   begin
@@ -274,7 +283,7 @@ begin
     bFormatValues.Visible := true;
     bFormatValues.Enabled := true;
     try
-      //sbFindLastRowClick(Sender);
+      bFindLastClick(Sender);
     except
     end;
   end;
@@ -354,14 +363,6 @@ procedure TCkSmp_import.FormCreate(Sender: TObject);
 begin
   FromRowValueString := '2';
   ToRowValueString := '10';
-  {
-  eFromRow.Text := FromRowValueString;
-  eToRow.Text := ToRowValueString;
-  eSampleIDColStr.Text := SampleNoColStr;
-  eOriginalIDColStr.Text := OriginalNoColStr;
-  eLongitudeColStr.Text := LongitudeColStr;
-  eLatitudeColStr.Text := LatitudeColStr;
-  }
 end;
 
 procedure TCkSmp_import.FormDestroy(Sender: TObject);
@@ -373,8 +374,9 @@ procedure TCkSmp_import.FormShow(Sender: TObject);
 begin
   eFromRow.Text := FromRowValueString;
   eToRow.Text := ToRowValueString;
-  eSampleIDColStr.Text := SampleNoColStr;
-  eOriginalIDColStr.Text := OriginalNoColStr;
+  eSeqNoColStr.Text := SeqNoColStr;
+  eSampleIDColStr.Text := SampleIDColStr;
+  eOriginalIDColStr.Text := OriginalIDColStr;
   eRegionIDColStr.Text := RegionIDColStr;
   eLongitudeColStr.Text := LongitudeColStr;
   eLatitudeColStr.Text := LatitudeColStr;

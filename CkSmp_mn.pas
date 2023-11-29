@@ -31,7 +31,6 @@ type
     miImportSpreadsheet: TMenuItem;
     miDivider2: TMenuItem;
     miAbout: TMenuItem;
-    SVGIconImageList1: TSVGIconImageList;
     StyleBook1: TStyleBook;
     BindingsList1: TBindingsList;
     BindSourceDB1: TBindSourceDB;
@@ -85,6 +84,7 @@ procedure TfmCkSmp_mn.Button1Click(Sender: TObject);
 var
   tNewRegionID, tExistRegionID : string;
   tExistCOID : string;
+  tSeqNo : integer;
   tNewSampleNo, tExistSampleNo : string;
   tNewLatitude, tExistLatitude, tLatitudeDifference : double;
   tNewLongitude, tExistLongitude, tLongitudeDifference : double;
@@ -93,6 +93,7 @@ var
 begin
   //make a small change to test
   LatLonCutoff := 0.00001;
+      //tSeqNo := dmCkSmp.fdmtNewSamplesSeqNo.AsInteger;
       tNewRegionID := Trim(dmCkSmp.fdmtNewSamplesRegionID.AsString);
       tNewSampleNo := Trim(dmCkSmp.fdmtNewSamplesSampleNo.AsString);
       lsbSampleNo.Text := tNewSampleNo;
@@ -160,8 +161,9 @@ begin
   IniFilename := CommonFilePath + 'CkSmp.ini';
   AppIni := TIniFile.Create(IniFilename);
   try
-    SampleNoColStr := AppIni.ReadString('DataColumns','SampleNoColStr','A');
-    OriginalNoColStr := AppIni.ReadString('DataColumns','OriginalNoColStr','B');
+    SeqNoColStr := AppIni.ReadString('DataColumns','SeqNoColStr','A');
+    SampleIDColStr := AppIni.ReadString('DataColumns','SampleIDColStr','A');
+    OriginalIDColStr := AppIni.ReadString('DataColumns','OriginalIDColStr','B');
     RegionIDColStr := AppIni.ReadString('DataColumns','RegionIDColStr','C');
     LongitudeColStr := AppIni.ReadString('DataColumns','LongitudeColStr','D');
     LatitudeColStr := AppIni.ReadString('DataColumns','LatitudeColStr','E');
@@ -186,8 +188,9 @@ begin
   IniFilename := CommonFilePath + 'CkSmp.ini';
   AppIni := TIniFile.Create(IniFilename);
   try
-    AppIni.WriteString('DataColumns','SampleNoColStr',SampleNoColStr);
-    AppIni.WriteString('DataColumns','OriginalNoColStr',OriginalNoColStr);
+    AppIni.WriteString('DataColumns','SeqNoColStr',SeqNoColStr);
+    AppIni.WriteString('DataColumns','SampleIDColStr',SampleIDColStr);
+    AppIni.WriteString('DataColumns','OriginalIDColStr',OriginalIDColStr);
     AppIni.WriteString('DataColumns','RegionIDColStr',RegionIDColStr);
     AppIni.WriteString('DataColumns','LongitudeColStr',LongitudeColStr);
     AppIni.WriteString('DataColumns','LatitudeColStr',LatitudeColStr);
@@ -248,6 +251,7 @@ procedure TfmCkSmp_mn.miCheckClick(Sender: TObject);
 var
   tNewRegionID, tExistRegionID : string;
   tExistCOID : string;
+  tSeqNo : integer;
   tNewSampleNo, tExistSampleNo : string;
   tNewLatitude, tExistLatitude, tLatitudeDifference : double;
   tNewLongitude, tExistLongitude, tLongitudeDifference : double;
@@ -263,6 +267,7 @@ begin
     repeat
       i := i + 1;
       //Application.ProcessMessages;
+      //tSeqNo := dmCkSmp.fdmtNewSamplesSeqNo.AsInteger;
       tNewSampleNo := Trim(dmCkSmp.fdmtNewSamplesSampleNo.AsString);
       tNewRegionID := Trim(dmCkSmp.fdmtNewSamplesRegionID.AsString);
       Val(dmCkSmp.fdmtNewSamplesLatitude.AsString,tNewLatitude,iCode);
@@ -368,19 +373,12 @@ begin
 end;
 
 procedure TfmCkSmp_mn.miImportSpreadsheetClick(Sender: TObject);
-var
-  ImportForm : TCkSmp_import;
 begin
-  {
-  ImportForm := TCkSmp_import.Create(self);
-  try
-    ImportForm.ShowModal;
-  finally
-    ImportForm.Free;
-  end;
-  }
+  //ShowMessage('0');
   CkSmp_import.ShowModal;
+  //ShowMessage('10');
   dmCkSmp.fdmtNewSamples.Refresh;
+  //ShowMessage('11');
 end;
 
 end.

@@ -74,8 +74,8 @@ object CkSmp_import: TCkSmp_import
       TabStop = False
       OnDrawColumnCell = SheetDataDrawColumnCell
       OnGetValue = SheetDataGetValue
-      Viewport.Width = 897.000000000000000000
-      Viewport.Height = 444.000000000000000000
+      Viewport.Width = 893.000000000000000000
+      Viewport.Height = 419.000000000000000000
     end
   end
   object pDefinitions: TPanel
@@ -88,24 +88,24 @@ object CkSmp_import: TCkSmp_import
     TabStop = False
     object pDefineFields: TPanel
       Align = Bottom
-      Position.Y = 40.000000000000000000
+      Position.Y = 8.000000000000000000
       Size.Width = 897.000000000000000000
-      Size.Height = 182.000000000000000000
+      Size.Height = 214.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       TabStop = False
-      object lSampleID: TLabel
+      object lSeqNo: TLabel
         Position.X = 16.000000000000000000
         Position.Y = 35.000000000000000000
         Size.Width = 60.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Trimming = None
-        Text = 'Sample ID'
-        TabOrder = 9
+        Text = 'Seq'
+        TabOrder = 11
         TabStop = False
       end
-      object eSampleIDColStr: TEdit
+      object eSeqNoColStr: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 1
         Position.X = 84.000000000000000000
@@ -122,34 +122,34 @@ object CkSmp_import: TCkSmp_import
         Size.PlatformDefault = False
         TextSettings.Trimming = None
         Text = 'Data columns'
-        TabOrder = 10
+        TabOrder = 12
         TabStop = False
       end
       object lOriginalID: TLabel
         Position.X = 16.000000000000000000
-        Position.Y = 65.000000000000000000
+        Position.Y = 97.000000000000000000
         Size.Width = 60.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Trimming = None
         Text = 'Original ID'
-        TabOrder = 8
+        TabOrder = 10
         TabStop = False
       end
       object lLongitude: TLabel
         Position.X = 16.000000000000000000
-        Position.Y = 124.000000000000000000
+        Position.Y = 156.000000000000000000
         Size.Width = 60.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Trimming = None
         Text = 'Longitude'
-        TabOrder = 6
+        TabOrder = 7
         TabStop = False
       end
       object lLatitude: TLabel
         Position.X = 16.000000000000000000
-        Position.Y = 154.000000000000000000
+        Position.Y = 186.000000000000000000
         Size.Width = 60.000000000000000000
         Size.Height = 17.000000000000000000
         Size.PlatformDefault = False
@@ -160,23 +160,63 @@ object CkSmp_import: TCkSmp_import
       end
       object eLongitudeColStr: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 4
+        TabOrder = 5
         Position.X = 84.000000000000000000
-        Position.Y = 122.000000000000000000
+        Position.Y = 153.000000000000000000
         Size.Width = 69.000000000000000000
         Size.Height = 22.000000000000000000
         Size.PlatformDefault = False
       end
       object eLatitudeColStr: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 5
+        TabOrder = 6
         Position.X = 84.000000000000000000
-        Position.Y = 152.000000000000000000
+        Position.Y = 184.000000000000000000
         Size.Width = 69.000000000000000000
         Size.Height = 22.000000000000000000
         Size.PlatformDefault = False
       end
       object eOriginalIDColStr: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 3
+        Position.X = 84.000000000000000000
+        Position.Y = 93.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lRegionID: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 126.000000000000000000
+        Size.Width = 60.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Region ID'
+        TabOrder = 8
+        TabStop = False
+      end
+      object eRegionIDColStr: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 4
+        Position.X = 84.000000000000000000
+        Position.Y = 123.000000000000000000
+        Size.Width = 69.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Label1: TLabel
+        Position.X = 16.000000000000000000
+        Position.Y = 67.000000000000000000
+        Size.Width = 60.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Trimming = None
+        Text = 'Sample ID'
+        TabOrder = 9
+        TabStop = False
+      end
+      object eSampleIDColStr: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 2
         Position.X = 84.000000000000000000
@@ -185,30 +225,10 @@ object CkSmp_import: TCkSmp_import
         Size.Height = 22.000000000000000000
         Size.PlatformDefault = False
       end
-      object lRegionID: TLabel
-        Position.X = 16.000000000000000000
-        Position.Y = 94.000000000000000000
-        Size.Width = 60.000000000000000000
-        Size.Height = 17.000000000000000000
-        Size.PlatformDefault = False
-        TextSettings.Trimming = None
-        Text = 'Region ID'
-        TabOrder = 7
-        TabStop = False
-      end
-      object eRegionIDColStr: TEdit
-        Touch.InteractiveGestures = [LongTap, DoubleTap]
-        TabOrder = 3
-        Position.X = 84.000000000000000000
-        Position.Y = 92.000000000000000000
-        Size.Width = 69.000000000000000000
-        Size.Height = 22.000000000000000000
-        Size.PlatformDefault = False
-      end
     end
     object Panel5: TPanel
       Align = Bottom
-      Position.Y = -25.000000000000000000
+      Position.Y = -57.000000000000000000
       Size.Width = 897.000000000000000000
       Size.Height = 65.000000000000000000
       Size.PlatformDefault = False
@@ -233,7 +253,7 @@ object CkSmp_import: TCkSmp_import
           TabStop = False
           object eFromRow: TEdit
             Touch.InteractiveGestures = [LongTap, DoubleTap]
-            TabOrder = 3
+            TabOrder = 4
             Text = '2'
             Position.X = 68.000000000000000000
             Position.Y = 20.000000000000000000
