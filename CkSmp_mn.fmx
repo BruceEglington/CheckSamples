@@ -81,8 +81,8 @@ object fmCkSmp_mn: TfmCkSmp_mn
       TabOrder = 0
       RowCount = 0
       Options = [AlternatingRowBackground, Editing, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, AlwaysShowSelection, Tabs, Header, HeaderClick, AutoDisplacement]
-      Viewport.Width = 991.000000000000000000
-      Viewport.Height = 318.000000000000000000
+      Viewport.Width = 987.000000000000000000
+      Viewport.Height = 293.000000000000000000
     end
     object ToolBar2: TToolBar
       Size.Width = 991.000000000000000000
@@ -125,8 +125,8 @@ object fmCkSmp_mn: TfmCkSmp_mn
       Size.Height = 216.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
-      Viewport.Width = 991.000000000000000000
-      Viewport.Height = 216.000000000000000000
+      Viewport.Width = 987.000000000000000000
+      Viewport.Height = 191.000000000000000000
     end
   end
   object Splitter1: TSplitter

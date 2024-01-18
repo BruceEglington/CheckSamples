@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F938FA16-39B3-431E-A5F3-3B7EC9D928D5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CheckSamples.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CheckSamples">
+        <MSBuild Projects="CheckSamples.dproj"/>
+    </Target>
+    <Target Name="CheckSamples:Clean">
+        <MSBuild Projects="CheckSamples.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CheckSamples:Make">
+        <MSBuild Projects="CheckSamples.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CheckSamples"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CheckSamples:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CheckSamples:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

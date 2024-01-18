@@ -6,12 +6,15 @@ object dmCkSmp: TdmCkSmp
     Params.Strings = (
       'User_Name=SYSDBA'
       'CharacterSet=ASCII'
-      'Database=C:\Data\Firebird\DATEVIEW2021V30.FDB'
-      'Password=Zbxc456~'
-      'Server=localhost'
+      'Database=s:\Data\Firebird\DATEVIEW2021V30.FDB'
+      'Password=V0lcano3^'
+      'Server=bromo2.usask.ca'
       'Port=3050'
       'Protocol=TCPIP'
       'DriverID=FB')
+    FormatOptions.AssignedValues = [fvDefaultParamDataType]
+    FormatOptions.DefaultParamDataType = ftString
+    LoginPrompt = False
     Transaction = FDTransaction1
     Left = 96
     Top = 40
@@ -70,9 +73,6 @@ object dmCkSmp: TdmCkSmp
     end
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    DriverID = 'Firebird3_64bit'
-    VendorHome = 'C:\EXE64'
-    VendorLib = 'C:\EXE64\fbclient.dll'
     ThreadSafe = True
     Left = 256
     Top = 40
@@ -156,5 +156,9 @@ object dmCkSmp: TdmCkSmp
       FieldName = 'ExistingRegionID'
       Size = 3
     end
+  end
+  object FDMoniRemoteClientLink1: TFDMoniRemoteClientLink
+    Left = 168
+    Top = 336
   end
 end

@@ -13,7 +13,8 @@ uses
   Datasnap.DBClient, FireDAC.Phys.IBBase, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, FireDAC.FMXUI.Login, FireDAC.Phys.TDataDef,
   FireDAC.Phys.ODBCBase, FireDAC.Phys.TData, FireDAC.Comp.UI,
-  FireDAC.Stan.StorageBin, FireDAC.DatS;
+  FireDAC.Stan.StorageBin, FireDAC.DatS, FireDAC.Moni.Base,
+  FireDAC.Moni.RemoteClient;
 
 type
   TdmCkSmp = class(TDataModule)
@@ -40,6 +41,7 @@ type
     fdmtNewSamplesRegionID: TStringField;
     fdmtNewSamplesExistingRegionID: TStringField;
     fdmtNewSamplesSeqNo: TIntegerField;
+    FDMoniRemoteClientLink1: TFDMoniRemoteClientLink;
   private
     { Private declarations }
   public

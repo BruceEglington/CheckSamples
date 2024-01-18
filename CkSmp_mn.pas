@@ -86,6 +86,7 @@ var
   tExistCOID : string;
   tSeqNo : integer;
   tNewSampleNo, tExistSampleNo : string;
+  tNewOriginalNo, tExistOriginalNo : string;
   tNewLatitude, tExistLatitude, tLatitudeDifference : double;
   tNewLongitude, tExistLongitude, tLongitudeDifference : double;
   iCode : integer;
@@ -96,6 +97,7 @@ begin
       //tSeqNo := dmCkSmp.fdmtNewSamplesSeqNo.AsInteger;
       tNewRegionID := Trim(dmCkSmp.fdmtNewSamplesRegionID.AsString);
       tNewSampleNo := Trim(dmCkSmp.fdmtNewSamplesSampleNo.AsString);
+      tNewOriginalNo := Trim(dmCkSmp.fdmtNewSamplesOriginalNo.AsString);
       lsbSampleNo.Text := tNewSampleNo;
       Val(dmCkSmp.fdmtNewSamplesLatitude.AsString,tNewLatitude,iCode);
       if (iCode > 0) then tNewLatitude := 90.0;
@@ -108,6 +110,7 @@ begin
       begin
         tExistSampleNo := Trim(dmCkSmp.fdqSamplesSampleNo.AsString);
         tExistCOID := Trim(dmCkSmp.fdqSamplesContinentID.AsString);
+        tExistOriginalNo := Trim(dmCkSmp.fdqSamplesORIGINALNO.AsString);
         tExistRegionID := Trim(dmCkSmp.fdqSamplesCountryAbr.AsString);
         tExistLatitude := dmCkSmp.fdqSamplesLatitude.AsFloat;
         tExistLongitude := dmCkSmp.fdqSamplesLongitude.AsFloat;
@@ -115,10 +118,18 @@ begin
         tLongitudeDifference := Abs(tExistLongitude-tNewLongitude);
         dmCkSmp.fdmtNewSamples.Edit;
         dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'SampleNo match';
+        if (tNewRegionID <> tExistRegionID) then
+        begin
+          dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'SampleNo match but different RegionID';
+        end;
         dmCkSmp.fdmtNewSamplesExistingRegionID.AsString := tExistRegionID;
         if ((tLatitudeDifference < LatLonCutoff) and (tLongitudeDifference < LatLonCutoff)) then
         begin
           dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'Identical SampleNo';
+          if (tNewOriginalNo <> tExistOriginalNo) then
+          begin
+            dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'Identical SampleNo but different OriginalNo';
+          end;
           dmCkSmp.fdmtNewSamplesLocationStatusLongitude.AsFloat := tLongitudeDifference;
           dmCkSmp.fdmtNewSamplesLocationStatusLatitude.AsFloat := tLatitudeDifference;
         end else
@@ -152,8 +163,10 @@ var
   AppIni   : TIniFile;
   tmpStr   : string;
   HomePath : string;
+  DBMonitor : string;
 begin
   tmpStr := '1';
+  DBMonitor := 'Inactive';
   //HomePath := System.IOUtils.TPath.GetDocumentsPath + System.SysUtils.PathDelim;
   HomePath := System.IOUtils.TPath.GetHomePath + System.SysUtils.PathDelim;
   //HomePath := TPath.GetHomePath;
@@ -171,7 +184,25 @@ begin
     if (GlobalChosenStyle = '') then GlobalChosenStyle := 'Windows';
     dmCkSmp.ChosenStyle := GlobalChosenStyle;
     DataPath := AppIni.ReadString('Paths','DataPath',CommonFilePath+'CkSmp\');
+    DataPath := IncludeTrailingPathDelimiter(DataPath);
     FlexTemplatePath := AppIni.ReadString('Paths','TemplatePath',CommonFilePath+'CkSmp\');
+    FlexTemplatePath := IncludeTrailingPathDelimiter(FlexTemplatePath);
+    DBMonitor := AppIni.ReadString('Monitor','DBMonitor','Inactive');
+    {
+    if (DBMonitor = 'Active') then
+    begin
+      dmCkSmp.fdc_DV.Connected := false;
+      //dmCkSmp.fdc_DV.Params.Add('MonitorBy'). := 'mbRemote';
+      dmCkSmp.FDMoniRemoteClientLink1.Tracing := true;
+      dmCkSmp.fdc_DV.ConnectionIntf.Tracing := true;
+    end else
+    begin
+      dmCkSmp.fdc_DV.Connected := false;
+      //dmCkSmp.fdc_DV.Params.MonitorBy := mbNone;
+      dmCkSmp.FDMoniRemoteClientLink1.Tracing := false;
+      dmCkSmp.fdc_DV.ConnectionIntf.Tracing := false;
+    end;
+    }
   finally
     AppIni.Free;
   end;
@@ -253,6 +284,7 @@ var
   tExistCOID : string;
   tSeqNo : integer;
   tNewSampleNo, tExistSampleNo : string;
+  tNewOriginalNo, tExistOriginalNo : string;
   tNewLatitude, tExistLatitude, tLatitudeDifference : double;
   tNewLongitude, tExistLongitude, tLongitudeDifference : double;
   iCode : integer;
@@ -270,6 +302,7 @@ begin
       //tSeqNo := dmCkSmp.fdmtNewSamplesSeqNo.AsInteger;
       tNewSampleNo := Trim(dmCkSmp.fdmtNewSamplesSampleNo.AsString);
       tNewRegionID := Trim(dmCkSmp.fdmtNewSamplesRegionID.AsString);
+      tNewOriginalNo := Trim(dmCkSmp.fdmtNewSamplesOriginalNo.AsString);
       Val(dmCkSmp.fdmtNewSamplesLatitude.AsString,tNewLatitude,iCode);
       if (iCode > 0) then tNewLatitude := 90.0;
       Val(dmCkSmp.fdmtNewSamplesLongitude.AsString,tNewLongitude,iCode);
@@ -291,6 +324,7 @@ begin
       if (dmCkSmp.fdqSamples.RecordCount > 0) then
       begin
         tExistSampleNo := Trim(dmCkSmp.fdqSamplesSampleNo.AsString);
+        tExistOriginalNo := Trim(dmCkSmp.fdqSamplesORIGINALNO.AsString);
         tExistRegionID := Trim(dmCkSmp.fdqSamplesCountryAbr.AsString);
         tExistCOID := Trim(dmCkSmp.fdqSamplesContinentID.AsString);
         tExistLatitude := dmCkSmp.fdqSamplesLatitude.AsFloat;
@@ -300,9 +334,25 @@ begin
         dmCkSmp.fdmtNewSamples.Edit;
         dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'SampleNo match';
         dmCkSmp.fdmtNewSamplesExistingRegionID.AsString := tExistRegionID;
+        if (tNewRegionID <> tExistRegionID) then
+        begin
+          dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'SampleNo match but different RegionID';
+        end;
+        if (tNewSampleNo = 'nd') then
+        begin
+          dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'Not defined SampleNo';
+        end;
         if ((tLatitudeDifference < LatLonCutoff) and (tLongitudeDifference < LatLonCutoff)) then
         begin
           dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'Identical SampleNo';
+          if (tNewOriginalNo <> tExistOriginalNo) then
+          begin
+            dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'Identical SampleNo but different OriginalNo';
+          end;
+          if (tNewSampleNo = 'nd') then
+          begin
+            dmCkSmp.fdmtNewSamplesSampleStatus.AsString := 'Not defined SampleNo';
+          end;
           dmCkSmp.fdmtNewSamplesLocationStatusLongitude.AsFloat := tLongitudeDifference;
           dmCkSmp.fdmtNewSamplesLocationStatusLatitude.AsFloat := tLatitudeDifference;
         end else
@@ -322,7 +372,7 @@ begin
     ShowMessage('Problem in process');
   end;
   lsbCount.Text := 'i = '+Int2Str(i);
-  lsbSampleNo.Text := tNewSampleNo;
+  lsbSampleNo.Text := 'Completed checking';
   Application.ProcessMessages;
   dmCkSmp.fdmtNewSamples.EnableControls;
   dmCkSmp.fdmtNewSamples.First;

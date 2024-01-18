@@ -160,6 +160,11 @@ var
   i : integer;
   tmpStr : string;
 begin
+  try
+    dmCkSmp.fdmtNewSamples.Open;
+    dmCkSmp.fdmtNewSamples.EmptyDataSet;
+  except
+  end;
   FromRowValueString := UpperCase(eFromRow.Text);
   ToRowValueString := UpperCase(eToRow.Text);
   SeqNoColStr := UpperCase(eSeqNoColStr.Text);

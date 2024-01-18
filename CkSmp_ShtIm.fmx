@@ -4,6 +4,7 @@ object CkSmp_import: TCkSmp_import
   Caption = 'Form1'
   ClientHeight = 773
   ClientWidth = 897
+  Position = MainFormCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -74,8 +75,8 @@ object CkSmp_import: TCkSmp_import
       TabStop = False
       OnDrawColumnCell = SheetDataDrawColumnCell
       OnGetValue = SheetDataGetValue
-      Viewport.Width = 893.000000000000000000
-      Viewport.Height = 419.000000000000000000
+      Viewport.Width = 897.000000000000000000
+      Viewport.Height = 444.000000000000000000
     end
   end
   object pDefinitions: TPanel
@@ -253,7 +254,7 @@ object CkSmp_import: TCkSmp_import
           TabStop = False
           object eFromRow: TEdit
             Touch.InteractiveGestures = [LongTap, DoubleTap]
-            TabOrder = 4
+            TabOrder = 3
             Text = '2'
             Position.X = 68.000000000000000000
             Position.Y = 20.000000000000000000
