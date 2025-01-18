@@ -4,18 +4,11 @@ object dmCkSmp: TdmCkSmp
   object fdc_DV: TFDConnection
     ConnectionName = 'DateView_bromo2'
     Params.Strings = (
-      'User_Name=SYSDBA'
-      'CharacterSet=ASCII'
-      'Database=s:\Data\Firebird\DATEVIEW2021V30.FDB'
-      'Password=V0lcano3^'
-      'Server=bromo2.usask.ca'
-      'Port=3050'
-      'Protocol=TCPIP'
-      'DriverID=FB')
+      'Database=s:\data\firebird\DATEVIEW2021v30.fdb'
+      'ConnectionDef=bromo2_DateView')
     FormatOptions.AssignedValues = [fvDefaultParamDataType]
     FormatOptions.DefaultParamDataType = ftString
     LoginPrompt = False
-    Transaction = FDTransaction1
     Left = 96
     Top = 40
   end
@@ -141,6 +134,9 @@ object dmCkSmp: TdmCkSmp
       DisplayWidth = 25
       FieldName = 'SampleStatus'
       Size = 50
+    end
+    object fdmtNewSamplesSampleStatusID: TIntegerField
+      FieldName = 'SampleStatusID'
     end
     object fdmtNewSamplesLocationStatusLongitude: TFloatField
       FieldName = 'LocationStatusLongitude'

@@ -75,8 +75,8 @@ object CkSmp_import: TCkSmp_import
       TabStop = False
       OnDrawColumnCell = SheetDataDrawColumnCell
       OnGetValue = SheetDataGetValue
-      Viewport.Width = 897.000000000000000000
-      Viewport.Height = 444.000000000000000000
+      Viewport.Width = 893.000000000000000000
+      Viewport.Height = 419.000000000000000000
     end
   end
   object pDefinitions: TPanel
@@ -254,7 +254,7 @@ object CkSmp_import: TCkSmp_import
           TabStop = False
           object eFromRow: TEdit
             Touch.InteractiveGestures = [LongTap, DoubleTap]
-            TabOrder = 3
+            TabOrder = 4
             Text = '2'
             Position.X = 68.000000000000000000
             Position.Y = 20.000000000000000000

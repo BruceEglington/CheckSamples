@@ -312,17 +312,22 @@
             <Form>fmCkSmp_mn</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="CkSmp_dm.pas">
-            <Form>dmCkSmp</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="CkSmp_varb.pas"/>
         <DCCReference Include="CkSmp_ShtIm.pas">
             <Form>CkSmp_import</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="..\Eglington Delphi common code items\Allsorts.pas"/>
+        <DCCReference Include="CkSmp_dm.pas">
+            <Form>dmCkSmp</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="CkSmp_dmStrat.pas">
+            <Form>dmStratCkSmp</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -373,12 +378,6 @@
                 <DeployFile LocalName="C:\EXE64\CheckSamples.rsm" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win64">
                         <RemoteName>CheckSamples.rsm</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="CkSmp.ini" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win64">
-                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1345,6 +1344,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

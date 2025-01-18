@@ -100,14 +100,6 @@ object fmCkSmp_mn: TfmCkSmp_mn
         xRadius = 4.000000000000000000
         yRadius = 4.000000000000000000
       end
-      object Button1: TButton
-        Position.X = 311.000000000000000000
-        Position.Y = 11.000000000000000000
-        TabOrder = 6
-        Text = 'Button1'
-        TextSettings.Trimming = None
-        OnClick = Button1Click
-      end
     end
   end
   object Panel3: TPanel
@@ -125,6 +117,7 @@ object fmCkSmp_mn: TfmCkSmp_mn
       Size.Height = 216.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
+      RowCount = 0
       Viewport.Width = 987.000000000000000000
       Viewport.Height = 191.000000000000000000
     end

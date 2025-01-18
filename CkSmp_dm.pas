@@ -42,6 +42,7 @@ type
     fdmtNewSamplesExistingRegionID: TStringField;
     fdmtNewSamplesSeqNo: TIntegerField;
     FDMoniRemoteClientLink1: TFDMoniRemoteClientLink;
+    fdmtNewSamplesSampleStatusID: TIntegerField;
   private
     { Private declarations }
   public

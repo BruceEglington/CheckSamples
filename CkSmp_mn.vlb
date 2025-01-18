@@ -45,7 +45,7 @@ Coordinates=590,0,145,36
 Visible=False
 
 []
-Coordinates=392,56,129,36
+Coordinates=62,1,59,58
 Visible=True
 ExplicitSubNodes=
 
@@ -126,7 +126,4 @@ Coordinates=168,287,141,36
 ModelLayerNames=NewLayer0
 ActiveLayerNames=NewLayer0
 EditingLayerName=NewLayer0
-
-[Button1]
-Coordinates=62,1,59,58
 
